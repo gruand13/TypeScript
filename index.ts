@@ -5,11 +5,12 @@
 
 // ``, '', ""
 // 10, 0.5, 0.00001, -50, 4e10
-
 // true,false
-const isBirthdayData: boolean =true;
-const ageData: number=40;
-const userNameData: string = 'John';
+
+
+// const isBirthdayData: boolean =true;
+// const ageData: number=40;
+// const userNameData: string = 'John';
 
 // function logBrtMsg(isBirthday: any,age:number, userName: string): string {
 //     if (isBirthday) {
@@ -19,6 +20,19 @@ const userNameData: string = 'John';
 //     }
     
 // }
+let salary: number;
+salary=5000;
+
+
+const userData={"isBirthdayData": true, "ageData": 40, "userNameData": "John"};
+const json="sakflgl";
+const userObj:{
+    isBirthdayData: boolean,
+    ageData:number,
+     userNameData: string 
+} = JSON.parse(userData);
+
+
 
 const logBrtMsg =(isBirthday: any,age:number, userName: string): string => {
     if (isBirthday) {
