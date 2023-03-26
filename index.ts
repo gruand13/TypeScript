@@ -1,18 +1,36 @@
-const currRate = "1.05";
+// let userName: string = "Andrey";
 
-const fetchCurr = (response:string): number => {
-	const data = JSON.parse(response);
-	return data;
+// userName = 5;
+// userName.isInteger();
+
+// ``, '', ""
+// 10, 0.5, 0.00001, -50, 4e10
+// true,false
+
+
+const isBirthdayData: boolean =true;
+const ageData: number=40;
+const userNameData: string = 'John';
+
+
+// const userData={"isBirthdayData": true, "ageData": 40, "userNameData": "John"};
+
+const createError = (msg: string) =>{
+    throw new Error(msg);
+    
+
 };
 
-function transferEurToUsd(available: boolean, amount:number, commission:number): void {
-	if (available) {
-		let res = fetchCurr(currRate) * amount * commission;
-		console.log(res);
-		// Или запись в элемент на странице вместо консоли
-	} else {
-		console.log("Сейчас обмен недоступен");
-	}
+function logBrtMsg(isBirthday: any,age:number, userName: string): string {
+    if (isBirthday === true) {
+        return `Congrats ${userName.toUpperCase()}, age: ${age+1}`;
+    } else if (isBirthday === false){
+        return "Too bad";
+    }
+    return createError("Error");
+    
 }
 
-transferEurToUsd(true, 500, 1.05);
+
+
+logBrtMsg(isBirthdayData, ageData, userNameData);
