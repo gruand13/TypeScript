@@ -1,36 +1,18 @@
-// let userName: string = "Andrey";
+const test : null = null;
+const test2 : any = null;
 
-// userName = 5;
-// userName.isInteger();
+const test3 : string = null;
+const test4 : number = null;
 
-// ``, '', ""
-// 10, 0.5, 0.00001, -50, 4e10
-// true,false
-
-
-const isBirthdayData: boolean =true;
-const ageData: number=40;
-const userNameData: string = 'John';
-
-
-// const userData={"isBirthdayData": true, "ageData": 40, "userNameData": "John"};
-
-const createError = (msg: string) =>{
-    throw new Error(msg);
-    
-
-};
-
-function logBrtMsg(isBirthday: any,age:number, userName: string): string {
-    if (isBirthday === true) {
-        return `Congrats ${userName.toUpperCase()}, age: ${age+1}`;
-    } else if (isBirthday === false){
-        return "Too bad";
+function getRandomData(){
+    if (Math.random()< 0.5){
+        return null;
+    } else {
+        return "  Some data   ";
     }
-    return createError("Error");
-    
 }
 
+const data= getRandomData();
+const trimmedData=data ? data.trim() : null;
 
 
-logBrtMsg(isBirthdayData, ageData, userNameData);
