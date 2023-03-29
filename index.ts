@@ -31,3 +31,23 @@ function logBrtMsg({isBirthdayData,
 
 }
 logBrtMsg(userData);
+
+
+const departments:string[] = ['dev', 'design', 'marketing'];
+
+const department = departments[0];
+// departments.push(5);
+
+const report = departments.filter((d:string)=> d !=='dev')
+                          .map((d:string)=>`${d} -done`);
+
+
+const nums:number[][]= [
+    [55, 0.1, 455], 
+    [2, 45, 57]
+];
+
+const [first]=report;
+console.log(first);
+
+
