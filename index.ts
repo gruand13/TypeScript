@@ -1,14 +1,33 @@
 
+const userData={
+    isBirthdayData: true,
+    ageData: 40,
+    userNameData: 'John',
+    messages: {
+        error:"Error"
+    }
 
-let id: symbol = Symbol("id");
-
-const data = {
-    [id]: 1
+}
+const createError=(msg: string)=>{
+    throw new Error(msg);
 }
 
-console.log(data[id]);
 
-const num1:bigint = 1n;
-const num2:bigint = 2n;
+function logBrtMsg({isBirthdayData,
+                    userNameData,
+                     ageData,
+                    messages:{error}}: {
+    isBirthdayData: boolean,
+    userNameData: string,
+    ageData:number,
+    messages: {error: string}
+}): string {
+    if (isBirthdayData===true) {
+	 return `Congrats ${userNameData.toUpperCase()}, age: ${ageData+1}`;
+    } else {
+        return createError(error);
+    }
+    
 
-console.log(num1+num2);
+}
+logBrtMsg(userData);
