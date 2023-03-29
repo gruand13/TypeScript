@@ -2,6 +2,9 @@
 // const ageData: number=40;
 // const userNameData: string = 'John';
 
+// new branch work with objects and destructurization
+
+
 const userData={
     isBirthdayData: true,
     ageData: 40,
@@ -14,6 +17,7 @@ const userData={
 const createError=(msg: string)=>{
     throw new Error(msg);
 }
+
 
 function logBrtMsg({isBirthdayData,
                     userNameData,
