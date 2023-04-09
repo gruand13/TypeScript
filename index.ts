@@ -1,8 +1,24 @@
-const salary =500;
+interface User {
+    login: string,
+    password: string,
+    age: number,
+    // addr?: string
+    addr: string | undefined,
+    parents?: {
+        mother? : string,
+        father?: string
+    }
+}
 
-const isOkay = true;
-let movement: boolean | string = false;
+const user: User = {
+    login: "first!",
+    password: "qwerty",
+    age: 50,
+    addr: "wqert"
+}
 
-if (isOkay){
-    movement= 'moving';
+const dbName = '1235';
+
+function sendUserData(obj: User, db?: string): void{
+    console.log(obj.parents?.father?.toLocaleLowerCase(), db?.toLocaleLowerCase())
 }
