@@ -1,24 +1,22 @@
-var msg = "Hello";
-msg = 'Hello';
-var port3000 = 3000;
-var port3001 = 3001;
-//литеральнй тип (четкое значение)
-function startServer(protocol, port) {
-    if (port === port3000 || port === port3001) {
-        console.log("Server started on ".concat(protocol, "://server: ").concat(port));
+var TOP = "Top";
+var RIGHT = "Right";
+var Directions;
+(function (Directions) {
+    Directions[Directions["TOP"] = 0] = "TOP";
+    Directions[Directions["RIGHT"] = 1] = "RIGHT";
+    Directions[Directions["LEFT"] = 2] = "LEFT";
+    Directions[Directions["BOTTOM"] = 3] = "BOTTOM";
+})(Directions || (Directions = {}));
+;
+var TimingFunction;
+(function (TimingFunction) {
+    TimingFunction["EASE"] = "ease";
+    TimingFunction["EASE_IN"] = "ease-in";
+    TimingFunction["LINEAR"] = "linear";
+})(TimingFunction || (TimingFunction = {}));
+function frame(elem, dir, tFunc) {
+    if (dir === Directions.RIGHT) {
+        console.log(tFunc);
     }
-    else {
-        console.error("Invalid port");
-    }
-    return "Server started";
 }
-startServer('https', 3001);
-function createAnimation(id, animationName, timingFunc, duration, iterCount) {
-    if (timingFunc === void 0) { timingFunc = 'ease'; }
-    // const elem = document.querySelector(`#${id}`) as HTMLElement;
-    // if (elem){
-    console.log("".concat(animationName, " ").concat(timingFunc, " ").concat(duration, " ").concat(iterCount));
-    // elem.style.animation = `${animationName} ${timingFunc} ${duration} ${iterCount}`;
-    // }
-}
-createAnimation('id', 'fade', 'ease-in', 5, 'infinite');
+frame('id', Directions.RIGHT, TimingFunction.LINEAR);
