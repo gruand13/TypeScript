@@ -1,31 +1,34 @@
-const TOP ="Top";
-const RIGHT = "Right";
+// let smth: unknown;
 
-enum Directions{
-    TOP,
-    RIGHT,
-    LEFT,
-    BOTTOM
-};
 
-enum TimingFunction{
-    EASE ='ease',
-    EASE_IN =`ease-in`,
-    LINEAR = 'linear',
-    
-}
-const enum TimingFunctionN{
-    EASE =1,
-    EASE_IN =2,
-    LINEAR = EASE * 3,
+// smth= "str";
+
+// let data: string[]= smth;
+// data.find(e=>e);
+
+// const someValue: unknown=10;
+// someValue.method();
+
+function fetchData(data:unknown): void{
+    if (typeof(data)==='string'){
+        console.log(data.toLowerCase());
+    }
     
 }
 
+const userData=
+"{'isBirthdayData': true, 'ageData': 40, 'userNameData': 'John'}";
 
-function frame(elem:string, dir: Directions, tFunc: TimingFunction): void {
-    if (dir===Directions.RIGHT){
-        console.log(tFunc);
+
+
+function transferData(d:unknown):  void{
+    if (typeof d==='string'){
+        console.log(d.toLowerCase());
+    } else if (typeof d==='object' && d ){
+        console.log(d);
+    }else{
+        console.error('Some error');
     }
 }
 
-frame('id', Directions.RIGHT, TimingFunction.LINEAR);
+transferData(userData);
