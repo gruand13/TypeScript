@@ -32,3 +32,10 @@ function transferData(d:unknown):  void{
 }
 
 transferData(userData);
+
+
+type T0 = any| unknown;
+type T1 = number| unknown;
+
+type T2 = any& unknown;
+type T3 = number & unknown;
