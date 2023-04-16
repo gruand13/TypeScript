@@ -1,38 +1,41 @@
-const fetchData = (url: string, method: "GET"| "POST"): void=> {
-    console.log(method);
+// let num: Number = new Number(5);
+// let num2: number =5 ; 
+// let num3 = Number(5);
+
+// num = num2;
+
+// num2 = num;
+
+const num =5;
+const strNum: string = num.toString();
+const str = '5';
+const numStr: number = +str;
+
+
+interface Department{
+    name: string,
+    budget: number
+}
+const department ={
+    name: 'web-dev',
+    budget: 50000
 }
 
-const reqOptions ={
-    url: "https://someurl.com",
-    method: 'GET'
-} as const ;
+interface Project {
+    name: string,
+    projectBudget: number,
 
-const str= 'str';
-const method = 'GET';
-
-fetchData('qqq', "GET");
-// fetchData(reqOptions.url, reqOptions.method as "GET");
-
-fetchData(reqOptions.url, <"GET">reqOptions.method );
+}
 
 
-const box = document.querySelector('.box') as HTMLElement;
-const input = <HTMLInputElement>document.querySelector('input');
-
-const someNumber: number = +input.value;
-
-console.log(someNumber.toFixed());
 
 
-let a ='value' as const;
+function transformDepartment(department: Department, amount: number): Project {
+    return {
+        name: department.name,
+        projectBudget:amount
+    }
+}
 
-let b = {f:100} as const;
-let c = [] as const;
-
-let value = 'value';
-let arr= ['aa', 'ddd'];
-let obj = {f:100};
-
-// let T0= value as const; будет ошибка так как работаем со ссылкой
-
-// let T5 = (Math.round(Math.random()*1)? 'yes': 'no') as const; ошибка так как вычисление не завершено
+const mainProject: Project= transformDepartment(department,4000);
+    
