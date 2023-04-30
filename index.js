@@ -1,16 +1,28 @@
-var fetchData = function (url, method) {
-    console.log(method);
+function isCar(car) {
+    // return 'wheels' in car;
+    return car.wheels.number !== undefined;
+}
+function isShip(ship) {
+    return 'sail' in ship;
+}
+var car = {
+    name: 'car',
+    engine: 'V8'
 };
-var reqOptions = {
-    url: "https://someurl.com",
-    method: 'GET'
-};
-var str = 'str';
-var method = 'GET';
-fetchData('qqq', "GET");
-// fetchData(reqOptions.url, reqOptions.method as "GET");
-fetchData(reqOptions.url, reqOptions.method);
-var box = document.querySelector('.box');
-var input = document.querySelector('input');
-var someNumber = +input.value;
-console.log(someNumber.toFixed());
+function repairVehicle(vehicle) {
+    switch (vehicle.name) {
+        case 'car':
+            console.log(vehicle.wheels);
+            break;
+        case 'ship':
+            console.log(vehicle.sail);
+            break;
+        case 'airplane':
+            console.log(vehicle.wings);
+            break;
+        default:
+            // const smth: never = vehicle;
+            console.log("OOOPS!");
+    }
+}
+repairVehicle(car);
