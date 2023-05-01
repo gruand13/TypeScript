@@ -1,54 +1,18 @@
-// Request
-type Animal ='cat' | 'dog' | 'bird';
+const box= document.querySelector('.box') as HTMLElement;
 
-enum AnimalStatus {
-	Available = 'available',
-	NotAvailable = 'not available',
+const input = document.querySelector('input');
+const link  = document.querySelector('a');
+const p = document.querySelector('.paragraph') as HTMLParagraphElement;
+
+const links = document.querySelectorAll('a');
+
+if (link){
+	link.href = 'sgdfhg';
 }
+input?.value;
 
-interface AnimalData	{
-		animal: Animal;
-		breed: string;
-		sterilized?: string;
-	}
+const elem = document.createElement('a');
 
-
-interface AnimalAvailableData extends AnimalData	{
-		location: string;
-		age?: number;
-		
-	}
-
-
-interface AnimalNotAvailableData	{
-	message: string;
-	nextUpdateIn: Date;
-}
-
-interface AnimalAvailableResponse {
-	status: AnimalStatus.Available;
-	data: AnimalAvailableData;
-}
-interface AnimalNotAvailableResponse {
-	status: AnimalStatus.NotAvailable;
-	data: AnimalNotAvailableData;
-}
-
-type Res =AnimalAvailableResponse | AnimalNotAvailableResponse;
-
-function isAvailable(res: Res): res is AnimalAvailableResponse {
-	if (res.status === AnimalStatus.Available){
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function checkAnimalData(animal: Res): AnimalAvailableData | string {
-	if (isAvailable(animal)) {
-		
-		return animal.data;
-	} else {
-		return `${animal.data}, you can try in ${animal.data.nextUpdateIn}`;
-	}
-}
+link?.addEventListener('click', (e)=> {
+	e.preventDefault();
+})
