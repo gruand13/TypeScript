@@ -26,3 +26,6 @@ const google = {
 }
 
 printDebts(hh, 'name', 'debts');
+
+type GoogleKeys = keyof typeof google;
+const keys2: GoogleKeys = 'name';
