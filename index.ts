@@ -77,9 +77,11 @@ function calculateAmountOfFigures<T extends Figure>(figure: T[]): AmountOfFigure
 
 	return amount;
 }
+interface CustomFigure extends Figure {
+	data?: {};
+}
 
-
-const data = [
+const data : CustomFigure[]= [
 	{
 		name: FigureNames.Rect,
 		data: { a: 5, b: 10 },
