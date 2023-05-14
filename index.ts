@@ -5,6 +5,7 @@ class User<T, S>{
 	constructor (name: T, age: S) {
 		this.name = name;
 		this.age = age;
+	
 	}
 
 	sayMyFullName<T>(surname: T): string {
@@ -14,6 +15,10 @@ class User<T, S>{
 			return `${this.name} ${surname}`;
 		}
 	}
+}
+
+class AdminUser<T> extends User<string, number> {
+	rules: T;
 }
 const ivan = new User("Ivan", 37);
 
