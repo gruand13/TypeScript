@@ -1,7 +1,28 @@
 interface ICompany {
 	name: string;
 	debts: number;
+	departments: Department[];
+	management: {
+		owner: string;
+	}
 }
+
+interface Department {
+	[key: string]: string;
+}
+
+const debts = 'debts';
+// let debts: 'debts'= 'debts';
+// let debts = 'debts' as 'debts';
+type CompanyDebtsType = ICompany[typeof debts];
+
+
+// type CompanyDebtsType = ICompany['debts'];
+type CompanyOwnerType = ICompany['management']['owner'];
+type CompanyDepartmentsType = ICompany['departments'][number];
+type CompanyDepartmentsTypes = ICompany['departments'];
+
+type Test = ICompany[keyof ICompany];
 
 type CompanyKeys = keyof ICompany;
 const keys: CompanyKeys = 'name';
@@ -13,19 +34,19 @@ function printDebts<T,K extends keyof T, S extends keyof T>(
 	console.log(`Company ${company[name]}, debts: ${company[debts]}`)
 };
 
-const hh:ICompany = {
-	name: "HH",
-	debts: 500000
+const google: ICompany = {
+	name: "google",
+	debts: 500000,
+	departments: {
+		sales: 'sales',
+		developer: 'dev'
+	},
+	management: 'John',
 }
 
-printDebts(hh, 'name', 'debts');
+printDebts(google, 'name', 'debts');
 
-const google = {
-	name: 'Google',
-	open: 'true'
-}
 
-printDebts(hh, 'name', 'debts');
 
 type GoogleKeys = keyof typeof google;
 const keys2: GoogleKeys = 'name';
