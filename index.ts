@@ -1,44 +1,109 @@
-type Currencies = {
-	usa: 'usd';
-	china: 'cny';
-	ukraine: 'uah';
-	kz: 'tenge'
+// Необходимо типизировать этот большой объект
+// Свойство futureClasses должно быть в зависимости от classes по типу
+// Свойства exClients и futureClients тоже должны быть в зависимости от currClients
+// ИЛИ все три зависят от общего родителя
+
+// Простыми словами: при добавлении свойства в целевой объект они должны быть
+// автоматически добавлены в зависимые (сразу подсказка от TS)
+
+interface IFitnessClass {
+	name: string,
+	startsAt: string,
+	duration: number,
 }
 
-type CurrWithoutUSA = Omit<Currencies, 'usa'> // delete selected property
-type CurrUSAAndUkraine = Pick<Currencies, 'usa' | 'ukraine'> // filtration by properties
-type FadeType = Exclude<MyAnimation, 'swipe'> // delete from union type
-type CountiresWithoutUSA = Exclude<keyof Currencies, 'usa'>
-
-type Swipetype = Extract<MyAnimation | Direction, 'swipe'> // select pointed type
-
-
-type CreateCustomCurr<T> = {
-	[P in keyof T as `custom${Capitalize< string & P>}`] :  string
+interface IFutureClass extends Omit<IFitnessClass, 'startsAt'> {
+	willStartsAt: string
 }
 
-type PlayersNames = 'Alex' | 'John';
-type GameDataCurr = Record<PlayersNames, CustomCurrencies>  //
-
-const gameData : GameDataCurr = {
-	Alex: {
-		customChina: 'qqqq',
-		customKz: 'ww',
-		customUkraine: 'ss',
-		customUsa: 'qqq'
-	},
-	John: {
-		customChina: 'qqqq',
-		customKz: 'ww',
-		customUkraine: 'ss',
-		customUsa: 'qqq'
-	}
+interface IClient {
+	name: string,
+	age: string | number,
+	gender: 'male'| 'female',
+	timeLeft: string,
+	makeCallFor: Date,
+	
 }
 
-type CustomCurrencies = CreateCustomCurr<Currencies>
+type CurrClent = Omit<IClient, 'makeCallFor'>;
+type ExClients = Omit<IClient, 'timeLeft'>;
+type FutureClients = Pick<IClient, 'name' | 'makeCallFor'>;
 
-type MyAnimation = 'fade' | 'swipe';
-type Direction = 'in'| 'out';
+interface IFitnessClub {
+	clubName: string,
+	location: string,
+	classes: IFitnessClass[],
+	futureClasses: IFutureClass[],
+	currClients: CurrClent[],
+	exClients: ExClients[],
+	futureClients: FutureClients[]
+}
 
-type MyNewAnimation = `${MyAnimation}${Capitalize<Direction>}`;
 
+const fitnessClubCenter: IFitnessClub = {
+	clubName: "Fitness club Center",
+	location: "central ave. 45, 5th floor",
+	classes: [
+		{
+			name: "yoga",
+			startsAt: "8:00 AM",
+			duration: 60,
+		},
+		{
+			name: "trx",
+			startsAt: "11:00 AM",
+			duration: 45,
+		},
+		{
+			name: "swimming",
+			startsAt: "3:00 PM",
+			duration: 70,
+		},
+	],
+	futureClasses: [
+		{
+			name: "boxing",
+			willStartsAt: "6:00 PM",
+			duration: 40,
+		},
+		{
+			name: "breath training",
+			willStartsAt: "8:00 PM",
+			duration: 30,
+		},
+	],
+	currClients: [
+		{
+			name: "John Smith",
+			age: "-",
+			gender: "male",
+			timeLeft: "1 month",
+		},
+		{
+			name: "Alise Smith",
+			age: 35,
+			gender: "female",
+			timeLeft: "3 month",
+		},
+		{
+			name: "Ann Sonne",
+			age: 24,
+			gender: "female",
+			timeLeft: "5 month",
+		},
+	],
+	exClients: [
+		{
+			name: "Tom Smooth",
+			age: 50,
+			gender: "male",
+			makeCallFor: new Date("2023-08-12"),
+		},
+	],
+	futureClients: [
+		{
+			name: "Maria",
+			makeCallFor: new Date("2023-07-10"),
+		},
+	],
+};
