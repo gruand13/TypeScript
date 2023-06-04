@@ -1,55 +1,38 @@
-// Condition ? true : false
-
-// SomeType extends OtherType ? TrueType : FalseType
-
-type Example = 'string' extends 'Hello' ? string : number;
-
-type FromUserOrFromBase<T extends string | number> = T extends string 
-? IDataFromUser 
-: IDataFromBase; 
-
-interface User<T extends 'created' | Date>{
-	created: T extends 'created' ? 'created' : Date
+type Currencies = {
+	usa: 'usd';
+	china?: 'cny';
+	ukraine: 'uah';
+	readonly kz: 'tenge'
 }
 
-const User: User<'created'>={
-	created: "created"
+type CreateCustomCurr<T> = {
+	-readonly[P in keyof T] -?:  string
 }
 
-interface IDataFromUser {
-	weight: string;
+type CustomCurrencies = CreateCustomCurr<Currencies>
+
+type ROnlyCurr = Readonly<Currencies>;
+
+// type CustomCurrwncies = {
+// 	usa: string;
+// 	china: string;
+// 	ukraine: string;
+// 	kz: string;
+// }
+
+// type сопоставимый тип = {
+// 	[randomIdentifier in Mnojestvo]: RandomType
+// }
+
+
+type Keys = 'name'| 'age'| 'role';
+
+type User = {
+[K in Keys] : string
 }
 
-interface IDataFromBase {
-	calories: number;
+const alex: User = {
+	name: 'alex',
+	age: '25',
+	role: 'admin'
 }
-// function calculateDailyCalories(str:string):IDataFromUser;
-// function calculateDailyCalories(num:number):IDataFromBase;
-function calculateDailyCalories<T extends string | number>(
-	numOrStr: T
-	): T extends string ? IDataFromUser : IDataFromBase {
-		if (typeof numOrStr === 'string'){
-			const obj: IDataFromUser = {
-				weight: numOrStr,
-			};
-			return obj as FromUserOrFromBase<T>;
-		} else {
-			const obj: IDataFromBase = {
-				calories: numOrStr,
-			};
-			return obj as FromUserOrFromBase<T>;
-		}
-	}
-
-	type GetStringType<T extends "hello"| 'world' | string> = T extends 'hello'? 
-	'hello'
-	: T extends 'world' 
-	? 'world': 
-	string;
-
-	type GetFirstType<T> = T extends Array<infer First> ? First : T;
-
-	type Ex = GetFirstType<number>
-
-	type ToArray<Type> = Type extends any ? Type[]: never;
-	type ExArray = ToArray<Ex | string>;
